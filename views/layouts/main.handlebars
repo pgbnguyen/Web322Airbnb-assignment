@@ -6,13 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title> AirBnB</title>
     <!--Tittle icon-->
-     <link rel="icon" type="image/gif" href="../airbnb-icon.png" />
+    <link rel="icon" type="image/gif" href="../airbnb-icon.png" />
     <!--Link Bootrap CSS-->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
         integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
     <!--Link Font Awsome-->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/registration.css">
+    <link rel="stylesheet" href="css/footer.css">
+
+
 </head>
 
 <body>
@@ -26,25 +30,87 @@
 
             <div class="d-flex flex-row-reverse bd-highlight">
                 <a href="/registration" class="navlink">Registration</a>
-                <a href="/room-list" class="navlink">Room List</a>
+                <a href="/room-list" class="navlink" onclick="myFunction()">Room List</a>
 
             </div>
 
         </nav>
 
+        <div class="bookingForm">
+            <form action="/action_page.php" class="form-container">
+                <h2>Book unique places to stay and things to do.</h2>
 
+                <label for="email"><b>Where</b></label>
+                <input list="locations" name="myBrowser" placeholder="Anywhere" /></label>
+                <datalist id="locations">
+                    <option value="Canada">
+                    <option value="USA">
+                    <option value="Japan">
+                    <option value="Vietnam">
+                    <option value="China">
+                    <option value="France">
+                </datalist>
+
+                <div class="dateInputs">
+                    <label><b>Check-in</b></label>
+                    <label><b>Checkout</b></label>
+                    <input type="date">
+                    <input type="date">
+                </div>
+
+                <label for="psw"><b>Guests</b></label>
+                <br>
+                <select>
+                    <option value="1 guest">1 guest</option>
+                    <option value="2 guests">2 guest</option>
+                    <option value="3 guests">3 guest</option>
+                    <option value="4 guests">4 guest</option>
+
+                </select>
+
+                <button type="submit" class="btn search" onclick="closeForm()">Search</button>
+            </form>
+        </div>
     </header>
-    <div>
-
-
-    </div>
 
     <main>
         {{{body}}}
     </main>
-    <footer>
-        this is footer
+
+    <footer id="footer">
+        <div class="container">
+            <div class="row text-center text-xs-center text-sm-left text-md-left">
+                <div class="col-xs-12 col-sm-4 col-md-4">
+                    <h5>Quick links</h5>
+                    <ul class="list-unstyled quick-links">
+                        <li><a href="/"><i class="fa fa-angle-double-right"></i>Home</a></li>
+                        <li><a href="/;"><i class="fa fa-angle-double-right"></i>About</a></li>
+                        <li><a href="/"><i class="fa fa-angle-double-right"></i>FAQ</a></li>
+                        <li><a href="/"><i class="fa fa-angle-double-right"></i>Get Started</a></li>
+                       
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
+                    <ul class="list-unstyled list-inline social text-center">
+                        <li class="list-inline-item"><a href="https://www.facebook.com/"><i class="fa fa-facebook"></i></a></li>
+                        <li class="list-inline-item"><a href="https://twitter.com/"><i class="fa fa-twitter"></i></a></li>
+                        <li class="list-inline-item"><a href="https://www.instagram.com/"><i class="fa fa-instagram"></i></a></li>   
+                </div>
+                </hr>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
+                    <p><u><a href="/">AirBnb Corporation</a></u> is the best online marketplace for arranging or offering lodging, primarily homestays, or tourism experiences.</p>    
+                    <p class="h6"> &copy All right Reversed.<a class="text-green ml-2" </p>
+                </div>
+                </hr>
+            </div>
+        </div>
     </footer>
+
+
 </body>
 
 </html>
