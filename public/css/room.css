@@ -16,3 +16,8 @@ ul > li > img{
     
     border-radius: 80px;
 }
+@media only screen and (max-width: 600px) {
+    .roomList{
+        display: block;
+    }
+}

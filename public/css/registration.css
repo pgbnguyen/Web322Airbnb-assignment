@@ -4,6 +4,7 @@ header{
     position: initial;
 }
 .bookingForm {
+  
   margin: 50px;
   position: relative;
 }
@@ -15,6 +16,7 @@ header{
 }
 /* Add styles to the form container */
 .form-container {
+  position: relative;
   max-width: 500px;
   padding: 10px;
   background-color: white;
