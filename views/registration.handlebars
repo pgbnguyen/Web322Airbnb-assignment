@@ -1,12 +1,12 @@
 <div class="signUpForm">
-    <form action="/action_page.php" class="form-container">
+    <form method="POST" action="/registration" class="form-container">
         <h2>Sign up Airbnb account</h2>
-        <input type="text" placeholder="Email address">
-        <input type="text" placeholder="First name">
-        <input type="text" placeholder="Last name">
-        <input type="password" placeholder="Create a Password">
+        <input name="email" type="text" placeholder="Email address">
+        <input name="first_name" type="text" placeholder="First name">
+        <input name="last_name" type="text" placeholder="Last name">
+        <input name="pwd" type="password" placeholder="Create a Password">
         <label>Birthday</label>
-        <input type="date" name="birthday">
+        <input name="dob" type="date" name="birthday">
         <button type="submit" class="btn signup" onclick="closeForm()">Sign up</button>
     </form>
 </div>
