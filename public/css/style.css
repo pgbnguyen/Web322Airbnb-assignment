@@ -26,3 +26,11 @@ header{
 i{
     color: whitesmoke;
 }
+
+.errors
+{
+    background-color: pink;
+    color:red;
+    padding :8px 16px;
+    margin-bottom: 16px;
+}

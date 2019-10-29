@@ -1,0 +1,12 @@
+{{#each message}}
+
+    <div class="errors">{{this}}</div>
+{{/each}}
+<div class="signUpForm">
+    <form method="POST" action="/login" class="form-container">
+        <h2>Login</h2>
+        <input name="email" type="text" placeholder="Email address">
+        <input name="pwd" type="password" placeholder="Password">
+        <button type="submit" class="btn signup">Sign up</button>
+    </form>
+</div>
