@@ -2,8 +2,10 @@ const express = require("express");
 const exphbs = require('express-handlebars');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-var Users = require('./config/config.js');
+const sgMail = require('@sendgrid/mail')
+const Users = require('./config/config.js');
 
+const regexp = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,12}$/;
 //Create Express APp Ojbect
 const app = express();
 
@@ -45,23 +47,8 @@ app.get("/registration", (req, res) => {
     res.render("registration");
 });
 
-app.post("/registration", (req, res) => {
-    /*
-        const Schema = mongoose.Schema;
-    
-        const userSchema = new Schema({
-            email: String,
-            first_name: String,
-            last_name: String,
-            pwd: String,
-            dob: Date
-        }); 
-        //Create modle named user representing user's collection in the database
-        const users = mongoose.model('users', userSchema);
-    
-    */
 
-
+app.post("/registration", (req, res)=>{
     const errors = [];
     if (req.body.email == "") {
         errors.push("Please enter your email");
@@ -74,6 +61,9 @@ app.post("/registration", (req, res) => {
     }
     if (req.body.pwd == "") {
         errors.push("Please enter your passwords");
+    }
+    if(req.body.pwd != regexp){
+        errors.push("Please enter a password that is 6 to 12 characters and the password must have letters and numbers only");
     }
     if (req.body.dob == "") {
         errors.push("Please enter your date of birth");
@@ -93,23 +83,38 @@ app.post("/registration", (req, res) => {
             pwd: req.body.pwd,
             dob: req.body.dob
         }
+
         //Create user by calling user model constructor
         let user = new Users(userInfo);
         user.save()
             .then(() => {
                 console.log('User was inserted into database')
-                res.render("registration");
             })
             .catch((err) => {
                 console.log(`User was not inserted into the database because ${err}`)
             })
+        //send email
 
+        sgMail.setApiKey("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")
+        const msg = {
+            to: `${req.body.email}`,
+            from: 'pgbnguyen@gmail.com',
+            subject: 'Confirmation Email',
+            text: 'This is a confirmation email',
+            html: '<strong>Congratulation, Welcome to Airbnb</strong>',
+        };
+        sgMail.send(msg)
+        .then(result=>{
+            console.log(`Email is sent! Result is: ${result}`);
+        })
+        .catch(err=>{
+            console.log(`Occerd an error: ${err}`)
+        })
+        res.redirect("/registration");
     }
 
 
-
 });
-
 app.get("/login", (req, res) => {
     res.render("login");
 });

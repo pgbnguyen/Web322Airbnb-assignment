@@ -1,10 +1,12 @@
-{{#each message}}
 
-    <div class="errors">{{this}}</div>
-{{/each}}
+
 <div class="signUpForm">
     <form method="POST" action="/registration" class="form-container">
         <h2>Sign up Airbnb account</h2>
+        {{#each message}}
+
+    <div class="errors">{{this}}</div>
+        {{/each}}
         <input name="email" type="text" placeholder="Email address">
         <input name="first_name" type="text" placeholder="First name">
         <input name="last_name" type="text" placeholder="Last name">
