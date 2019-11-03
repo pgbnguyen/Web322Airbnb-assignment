@@ -47,9 +47,9 @@ app.get("/registration", (req, res) => {
     res.render("registration");
 });
 
+const regexp=/^[a-zA-Z0-9]{6,12}$/;
 
 app.post("/registration", (req, res)=>{
-    const reg = new RegExp("^([a-zA-Z0-9]{6,12})$");
     const errors = [];
     if (req.body.email == "") {
         errors.push("Please enter your email");
@@ -63,9 +63,9 @@ app.post("/registration", (req, res)=>{
     if (req.body.pwd == "") {
         errors.push("Please enter your passwords");
     }
-    if(reg.test(req.body.pwd) == false){
+     if(regexp.test(req.body.pwd) == false){
         errors.push("Please enter a password that is 6 to 12 characters and the password must have letters and numbers only");
-    }
+     }
     if (req.body.dob == "") {
         errors.push("Please enter your date of birth");
     }
