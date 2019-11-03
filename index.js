@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const sgMail = require('@sendgrid/mail')
 const Users = require('./config/config.js');
 
-const regexp = /^(?=.*[0-9])(?=.*[!@#$%^&*])[a-zA-Z0-9!@#$%^&*]{6,12}$/;
+
 //Create Express APp Ojbect
 const app = express();
 
@@ -49,6 +49,7 @@ app.get("/registration", (req, res) => {
 
 
 app.post("/registration", (req, res)=>{
+    const reg = new RegExp("^([a-zA-Z0-9]{6,12})$");
     const errors = [];
     if (req.body.email == "") {
         errors.push("Please enter your email");
@@ -62,7 +63,7 @@ app.post("/registration", (req, res)=>{
     if (req.body.pwd == "") {
         errors.push("Please enter your passwords");
     }
-    if(req.body.pwd != regexp){
+    if(reg.test(req.body.pwd) == false){
         errors.push("Please enter a password that is 6 to 12 characters and the password must have letters and numbers only");
     }
     if (req.body.dob == "") {
