@@ -47,9 +47,10 @@ app.get("/registration", (req, res) => {
     res.render("registration");
 });
 
-const regexp=/^[a-zA-Z0-9]{6,12}$/;
+
 
 app.post("/registration", (req, res)=>{
+    const regexp = /^[a-zA-Z0-9]{6,12}$/;
     const errors = [];
     if (req.body.email == "") {
         errors.push("Please enter your email");
@@ -116,6 +117,7 @@ app.post("/registration", (req, res)=>{
 
 
 });
+
 app.get("/login", (req, res) => {
     res.render("login");
 });
@@ -141,7 +143,7 @@ app.post("/login", (req, res) => {
 app.get("/room-list", (req, res) => {
     res.render("room-list");
 });
-PORT = process.env.PORT || 5000;
+PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
     console.log(`Connected Successfully to PORT: ${PORT}`);
 });
